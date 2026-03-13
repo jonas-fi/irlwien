@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>irl.wien — Speed Dating Sonntag 22. März</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; } :root { --red: #E8192C; --red-dark: #B8001A; --red-soft: #FF4D5E; --pink: #FFE4E7; --cream: #FFF9F5; --dark: #1A0A0C; --dark2: #2D1215; --gray: #8A7070; --white: #FFFFFF;
+} html { scroll-behavior: smooth; }
+html, body { margin:0; padding:0; background:var(--dark); } body { background: var(--cream); color: var(--dark); font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; margin:0; padding-bottom:0; } body::before { content:''; position:fixed; top:0; left:0; right:0; height:calc(env(safe-area-inset-top, 0px) + 8px); background:var(--red); z-index:999; pointer-events:none; } body::after { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9000;
+} /* REVEAL */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); } /* ANIMATIONS */
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+@keyframes blobFloat { 0%,100%{transform:translate(0,0) scale(1);} 33%{transform:translate(22px,-22px) scale(1.04);} 66%{transform:translate(-14px,14px) scale(0.96);} }
+@keyframes heartbeat { 0%,100%{transform:scale(1);} 14%{transform:scale(1.15);} 28%{transform:scale(1);} 42%{transform:scale(1.08);} 56%{transform:scale(1);} }
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.25;} }
+@keyframes floatEmoji { 0%,100%{transform:translateY(0) rotate(0deg);} 50%{transform:translateY(-14px) rotate(7deg);} }
+@keyframes shimmer { 0%{transform:translateX(-100%);} 100%{transform:translateX(100%);} } /* URGENCY */
+.urgency-bar { background: var(--red); color: #fff; text-align: center; padding: calc(0.58rem + env(safe-area-inset-top, 0px)) 1rem 0.58rem; font-size: 0.78rem; font-weight: 600; position: sticky; top: 0; overflow: hidden; z-index: 1000; margin:0; box-shadow: 0 0 0 9999px var(--red); clip-path: inset(0 -100vmax 0 -100vmax);
+}
+.urgency-bar::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); animation: shimmer 2.5s ease-in-out infinite;
+} /* NAV */
+nav { position: sticky; top: calc(40px + env(safe-area-inset-top, 0px)); z-index: 250; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; background: rgba(255,249,245,0.93); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(232,25,44,0.1);
+}
+.logo-mark { display:flex; align-items:center; gap:0.55rem; text-decoration:none; }
+.logo-icon { width:34px; height:34px; background:var(--red); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.95rem; color:#fff; position:relative; overflow:hidden; flex-shrink:0; transform-origin:center center;
+}
+.logo-icon::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,0.28) 0%,transparent 60%); }
+.logo-text { font-family:'Playfair Display',serif; font-weight:700; font-size:1.3rem; color:var(--dark); letter-spacing:-0.02em; }
+.logo-text span { color:var(--red); }
+.nav-links { display:flex; gap:1.6rem; list-style:none; }
+.nav-links a { font-size:0.82rem; font-weight:500; color:var(--gray); text-decoration:none; transition:color 0.2s; }
+.nav-links a:hover { color:var(--red); }
+.nav-pill { background:var(--red); color:#fff; padding:0 1.2rem; border-radius:100px; font-size:0.78rem; font-weight:700; text-decoration:none; transition:background 0.2s,transform 0.2s; white-space:nowrap; display:inline-flex; align-items:center; justify-content:center; line-height:1; height:38px; align-self:center;
+}
+.nav-pill:hover { background:var(--red-dark); transform:scale(1.04); } /* HERO */
+.hero { min-height: calc(100vh - 100px); display:grid; grid-template-columns:1fr 1fr; position:relative; overflow:hidden; }
+.hero-bg { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.blob { position:absolute; border-radius:50%; filter:blur(80px); opacity:0.11; }
+.blob-1 { width:520px; height:520px; background:var(--red); top:-160px; right:-70px; animation:blobFloat 8s ease-in-out infinite; }
+.blob-2 { width:360px; height:360px; background:#FF6B7A; bottom:-70px; left:8%; animation:blobFloat 10s ease-in-out infinite reverse; }
+.blob-3 { width:260px; height:260px; background:var(--red); top:42%; left:38%; animation:blobFloat 7s ease-in-out infinite 2s; } .hero-left { display:flex; flex-direction:column; justify-content:center; padding:4rem 2.5rem 4rem 4.5rem; position:relative; z-index:2; } .hero-badge { display:inline-flex; align-items:center; gap:0.5rem; background:var(--pink); color:var(--red); padding:0.38rem 1rem; border-radius:100px; font-size:0.75rem; font-weight:600; margin-bottom:1.6rem; width:fit-content; opacity:0; animation:fadeUp 0.6s ease forwards 0.1s;
+}
+.badge-dot { width:7px; height:7px; background:var(--red); border-radius:50%; flex-shrink:0; animation:blink 1.5s ease-in-out infinite; } .hero-title { font-family:'Playfair Display',serif; font-size:clamp(2.8rem,5vw,5.2rem); font-weight:900; line-height:1.0; letter-spacing:-0.03em; margin-bottom:1.4rem; opacity:0; animation:fadeUp 0.7s ease forwards 0.25s;
+}
+.hero-title .line2 { color:var(--red); font-style:italic; display:block; }
+.hero-title .line3 { display:block; position:relative; }
+.hero-title .line3::after { content:''; position:absolute; bottom:4px; left:0; width:100%; height:5px; background:var(--pink); z-index:-1; border-radius:3px; } .hero-sub { font-size:1rem; line-height:1.75; color:var(--gray); max-width:400px; margin-bottom:2.2rem; font-weight:400; opacity:0; animation:fadeUp 0.7s ease forwards 0.4s; }
+.hero-sub strong { color:var(--dark); font-weight:600; } .hero-actions { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; opacity:0; animation:fadeUp 0.7s ease forwards 0.55s; }
+.btn-big { background:var(--red); color:#fff; padding:0.85rem 2rem; border-radius:100px; font-size:0.9rem; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem; transition:background 0.2s,transform 0.2s,box-shadow 0.2s; box-shadow:0 8px 28px rgba(232,25,44,0.35);
+}
+.btn-big:hover { background:var(--red-dark); transform:translateY(-2px); box-shadow:0 12px 38px rgba(232,25,44,0.45); }
+.btn-ghost { font-size:0.83rem; font-weight:600; color:var(--gray); text-decoration:none; display:flex; align-items:center; gap:0.25rem; transition:color 0.2s; }
+.btn-ghost:hover { color:var(--red); } .hero-stats { display:flex; gap:1.8rem; margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(232,25,44,0.12); opacity:0; animation:fadeUp 0.7s ease forwards 0.7s; flex-wrap:wrap; }
+.stat-num { font-family:'Playfair Display',serif; font-size:1.7rem; font-weight:700; color:var(--red); line-height:1; }
+.stat-label { font-size:0.7rem; color:var(--gray); font-weight:500; margin-top:0.2rem; } .hero-right { display:flex; align-items:center; justify-content:center; padding:3rem 3rem 3rem 1.5rem; position:relative; }
+.floating-emoji { position:absolute; font-size:1.4rem; animation:floatEmoji 6s ease-in-out infinite; pointer-events:none; opacity:0.6; }
+.fe-1 { top:18%; left:2%; animation-delay:0s; font-size:1.1rem; }
+.fe-2 { top:28%; right:4%; animation-delay:1.5s; }
+.fe-3 { bottom:28%; left:4%; animation-delay:3s; font-size:1rem; }
+.fe-4 { bottom:18%; right:2%; animation-delay:0.8s; font-size:1.2rem; } .event-card-hero { background:var(--dark); border-radius:24px; padding:2.2rem; width:100%; max-width:360px; position:relative; overflow:hidden; box-shadow:0 32px 64px rgba(26,10,12,0.28); opacity:0; animation:fadeUp 0.8s ease forwards 0.5s;
+}
+.event-card-hero::before { content:''; position:absolute; top:-70px; right:-70px; width:180px; height:180px; background:radial-gradient(circle,rgba(232,25,44,0.35) 0%,transparent 70%); pointer-events:none; }
+.card-tag { display:inline-flex; align-items:center; gap:0.4rem; background:rgba(232,25,44,0.15); color:var(--red-soft); padding:0.3rem 0.85rem; border-radius:100px; font-size:0.68rem; font-weight:600; margin-bottom:1.2rem; letter-spacing:0.05em; text-transform:uppercase; }
+.card-heart { font-size:3rem; display:flex; align-items:center; justify-content:flex-start; width:100%; height:1.1em; margin:0 0 0.35rem 0; animation:heartbeat 2s ease-in-out infinite; transform-origin:center center; text-align:left; }
+.card-event-name { font-family:'Playfair Display',serif; font-size:1.55rem; font-weight:700; color:#fff; line-height:1.2; margin-bottom:1.3rem; }
+.card-event-name em { color:var(--red-soft); font-style:italic; }
+.card-detail { display:flex; align-items:center; gap:0.75rem; padding:0.62rem 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.card-detail:last-of-type { border-bottom:none; }
+.card-icon { width:30px; height:30px; background:rgba(255,255,255,0.07); border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:0.85rem; flex-shrink:0; }
+.card-detail-label { font-size:0.6rem; color:rgba(255,255,255,0.33); text-transform:uppercase; letter-spacing:0.07em; font-weight:600; }
+.card-detail-value { font-size:0.86rem; color:#fff; font-weight:500; margin-top:0.1rem; }
+.card-tickets { margin-top:1.2rem; background:rgba(255,255,255,0.05); border-radius:11px; padding:0.85rem 1rem; }
+.tickets-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; }
+.tickets-row:last-child { margin-bottom:0; }
+.ticket-type { font-size:0.74rem; color:rgba(255,255,255,0.52); font-weight:500; }
+.ticket-bar-wrap { flex:1; margin:0 0.65rem; height:4px; background:rgba(255,255,255,0.1); border-radius:2px; overflow:hidden; }
+.ticket-bar { height:100%; border-radius:2px; }
+.bar-w { background:#FF6B9D; width:100%; }
+.bar-m { background:#6B9DFF; width:100%; }
+.ticket-count { font-size:0.74rem; font-weight:700; color:#fff; } /* SECTION TAG */
+.section-tag { display:inline-flex; align-items:center; gap:0.4rem; padding:0.36rem 0.9rem; border-radius:100px; font-size:0.71rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:1.2rem; }
+.st-dark { background:rgba(232,25,44,0.15); color:var(--red-soft); }
+.st-light { background:var(--pink); color:var(--red); }
+.st-white { background:#fff; color:var(--red); } /* WHY */
+.why-section { padding:6rem 4.5rem; background:var(--dark); position:relative; overflow:hidden; }
+.why-section::before { content:''; position:absolute; top:-160px; left:50%; transform:translateX(-50%); width:650px; height:320px; background:radial-gradient(ellipse,rgba(232,25,44,0.12) 0%,transparent 70%); pointer-events:none; }
+.why-title { font-family:'Playfair Display',serif; font-size:clamp(1.85rem,3.2vw,3rem); font-weight:900; color:#fff; line-height:1.1; margin-bottom:0.85rem; max-width:540px; }
+.why-title em { color:var(--red-soft); font-style:italic; }
+.why-sub { color:rgba(255,255,255,0.38); font-size:0.96rem; line-height:1.72; max-width:460px; margin-bottom:3.2rem; }
+.reasons-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.06); border-radius:18px; overflow:hidden; }
+.reason-card { background:var(--dark2); padding:1.9rem; transition:background 0.25s; }
+.reason-card:hover { background:#3a1a1e; }
+.reason-emoji { font-size:1.9rem; margin-bottom:0.8rem; display:block; }
+.reason-title { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:0.45rem; }
+.reason-text { font-size:0.83rem; line-height:1.64; color:rgba(255,255,255,0.4); } /* EVENT */
+.event-section { padding:6rem 4.5rem; background:var(--cream); }
+.event-grid { display:grid; grid-template-columns:1fr 1fr; gap:4.5rem; align-items:center; }
+.event-big-title { font-family:'Playfair Display',serif; font-size:clamp(1.75rem,3vw,2.75rem); font-weight:900; line-height:1.1; margin-bottom:1.3rem; letter-spacing:-0.02em; }
+.event-big-title em { color:var(--red); font-style:italic; }
+.event-detail-cards { display:flex; flex-direction:column; gap:0.65rem; }
+.edc { display:flex; align-items:center; gap:1rem; padding:0.85rem 1rem; background:#fff; border-radius:12px; border:1.5px solid rgba(232,25,44,0.08); transition:border-color 0.2s,transform 0.2s; }
+.edc:hover { border-color:rgba(232,25,44,0.26); transform:translateX(3px); }
+.edc-icon { width:38px; height:38px; background:var(--pink); border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+.edc-label { font-size:0.62rem; color:var(--gray); font-weight:700; text-transform:uppercase; letter-spacing:0.07em; }
+.edc-value { font-size:0.9rem; font-weight:600; color:var(--dark); margin-top:0.1rem; }
+.schoenbrunn-card { background:var(--dark); border-radius:22px; overflow:hidden; }
+.schoenbrunn-img-placeholder { height:195px; background:linear-gradient(135deg,#2D1215 0%,#1A0A0C 50%,#3D1A20 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+.schoenbrunn-pattern { position:absolute; inset:0; background-image:radial-gradient(circle at 20% 50%,rgba(232,25,44,0.15) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(255,107,154,0.1) 0%,transparent 40%); }
+.schoenbrunn-text-overlay { position:relative; z-index:1; text-align:center; }
+.schoenbrunn-emoji { font-size:3.2rem; display:block; margin-bottom:0.35rem; }
+.schoenbrunn-loc { font-family:'Playfair Display',serif; font-size:1.35rem; font-weight:700; color:#fff; font-style:italic; }
+.schoenbrunn-body { padding:1.5rem; }
+.schoenbrunn-body h3 { font-family:'Playfair Display',serif; font-size:1.15rem; color:#fff; margin-bottom:0.4rem; font-weight:700; }
+.schoenbrunn-body p { font-size:0.82rem; color:rgba(255,255,255,0.42); line-height:1.6; margin-bottom:1rem; }
+.venue-tags { display:flex; gap:0.42rem; flex-wrap:wrap; }
+.vtag { background:rgba(255,255,255,0.07); color:rgba(255,255,255,0.52); padding:0.26rem 0.72rem; border-radius:100px; font-size:0.68rem; font-weight:500; } /* HOW */
+.how-section { padding:6rem 4.5rem; background:linear-gradient(180deg,#fff1f3 0%, #ffe4e7 100%); position:relative; overflow:hidden; }
+.how-section::before { content:''; display:none; }
+.how-title { font-family:'Playfair Display',serif; font-size:clamp(1.75rem,3vw,2.75rem); font-weight:900; line-height:1.1; margin-bottom:2.8rem; max-width:440px; }
+.how-title em { color:var(--red); font-style:italic; }
+.steps { display:grid; grid-template-columns:repeat(4,1fr); gap:1.1rem; align-items:stretch; }
+.step-card { background:#fff; border-radius:18px; padding:1.7rem; transition:transform 0.22s,box-shadow 0.22s; border:1px solid rgba(232,25,44,0.08); box-shadow:0 10px 28px rgba(232,25,44,0.06); }
+.step-card:hover { transform:translateY(-5px); box-shadow:0 16px 32px rgba(232,25,44,0.1); }
+.step-num { font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:900; color:#ffd6dc; line-height:1; margin-bottom:0.35rem; }
+.step-emoji { font-size:1.6rem; display:block; margin-bottom:0.65rem; }
+.step-title { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; margin-bottom:0.4rem; color:var(--dark); }
+.step-text { font-size:0.8rem; color:var(--gray); line-height:1.6; } /* TICKET CTA */
+.signup-section { padding:6rem 4.5rem; background:var(--cream); }
+.signup-inner { max-width:500px; margin:0 auto; text-align:center; }
+.signup-title { font-family:'Playfair Display',serif; font-size:clamp(1.75rem,3vw,2.75rem); font-weight:900; line-height:1.1; margin-bottom:0.85rem; }
+.signup-title em { color:var(--red); font-style:italic; }
+.signup-sub { color:var(--gray); font-size:0.92rem; line-height:1.72; margin-bottom:1.9rem; }
+.price-display { display:flex; align-items:center; justify-content:center; gap:0.5rem; margin-bottom:2rem; }
+.price-num { font-family:'Playfair Display',serif; font-size:2.7rem; font-weight:900; color:var(--red); line-height:1; }
+.price-info .p1 { font-size:0.78rem; font-weight:600; color:var(--dark); text-align:left; }
+.price-info .p2 { font-size:0.68rem; color:var(--gray); margin-top:0.1rem; text-align:left; }
+.ticket-cta-wrap { display:flex; flex-direction:column; align-items:center; gap:0.85rem; }
+.ticket-btn { display:flex; align-items:center; justify-content:center; background:var(--red); color:#fff; padding:1rem 2.5rem; border-radius:100px; font-size:1.05rem; font-weight:700; text-decoration:none; width:100%; max-width:390px; transition:background 0.2s,transform 0.2s,box-shadow 0.2s; box-shadow:0 10px 34px rgba(232,25,44,0.37);
+}
+.ticket-btn:hover { background:var(--red-dark); transform:translateY(-3px); box-shadow:0 16px 44px rgba(232,25,44,0.47); }
+.ticket-note { font-size:0.69rem; color:var(--gray); text-align:center; line-height:1.55; }
+.ticket-spots { width:100%; max-width:390px; background:#fff; border-radius:13px; padding:1.05rem 1.25rem; border:1.5px solid rgba(232,25,44,0.08); display:flex; flex-direction:column; gap:0.6rem; }
+.spot-row { display:flex; align-items:center; gap:0.72rem; }
+.spot-label { font-size:0.76rem; font-weight:600; color:var(--dark); width:80px; flex-shrink:0; }
+.spot-bar-wrap { flex:1; height:5px; background:var(--pink); border-radius:3px; overflow:hidden; }
+.spot-bar { height:100%; border-radius:3px; }
+.spot-right { font-size:0.68rem; color:var(--gray); font-weight:500; white-space:nowrap; } /* FOOTER */
+footer { background:var(--dark); padding:2.4rem 4.5rem calc(2.4rem + env(safe-area-inset-bottom, 0px) + 24px); display:flex; justify-content:space-between; align-items:center; margin:0; position:relative; z-index:2; box-shadow: 0 0 0 9999px var(--dark); clip-path: inset(0 -100vmax -100vmax -100vmax); }
+footer .logo-text { color:#fff; }
+footer p { font-size:0.74rem; color:rgba(255,255,255,0.26); }
+.footer-links { display:flex; gap:1.3rem; list-style:none; }
+.footer-links a { font-size:0.74rem; color:rgba(255,255,255,0.26); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:var(--red-soft); } /* ── TABLET ── */
+@media (max-width: 1024px) { .hero { grid-template-columns:1fr; min-height:auto; } .hero-left { padding:3.5rem 2rem 2rem; } .hero-right { padding:0 2rem 3rem; justify-content:flex-start; } .event-card-hero { max-width:100%; } .why-section,.event-section,.how-section,.signup-section { padding:5rem 2.5rem; } .reasons-grid { grid-template-columns:1fr 1fr; } .event-grid { grid-template-columns:1fr; gap:2.8rem; } .steps { grid-template-columns:1fr 1fr; gap:1rem; } footer { padding:2rem 2.5rem; }
+} /* ── MOBILE ── */
+@media (max-width: 640px) { .urgency-bar { font-size:0.7rem; padding:calc(0.52rem + env(safe-area-inset-top, 0px)) 0.8rem 0.52rem; } nav { padding:0.8rem 1.1rem; } .nav-links { display:none; } .logo-text { font-size:1.15rem; } .hero-left { padding:2.4rem 1.2rem 1.5rem; } .hero-right { padding:0 1.2rem 2.5rem; } .hero-title { font-size:2.5rem; } .hero-sub { font-size:0.9rem; max-width:100%; } .hero-stats { gap:1.3rem; } .stat-num { font-size:1.45rem; } .btn-big { font-size:0.84rem; padding:0.76rem 1.5rem; } .event-card-hero { padding:1.5rem; } .card-heart { font-size:2.5rem; height:1em; margin-bottom:0.45rem; } .card-event-name { font-size:1.3rem; } .why-section,.event-section,.how-section,.signup-section { padding:3.8rem 1.2rem; } .why-title,.event-big-title,.how-title,.signup-title { font-size:1.7rem; } .reasons-grid { grid-template-columns:1fr; } .steps { grid-template-columns:1fr 1fr; gap:0.75rem; } .step-card { padding:1.25rem; } .step-num { font-size:2rem; } .step-emoji { font-size:1.3rem; } .ticket-btn { font-size:0.94rem; padding:0.9rem 1.7rem; } footer { flex-direction:column; gap:1.1rem; text-align:center; padding:1.8rem 1.2rem calc(1.8rem + env(safe-area-inset-bottom, 0px) + 24px); } .footer-links { display:none; } .floating-emoji { display:none; }
+}
+</style>
+</head>
+<body> <div class="urgency-bar"> 🔥 Nur noch wenige Plätze frei — Sonntag 22. März · 15:00 Uhr · Schlosspark Schönbrunn
+</div> <nav> <a href="#" class="logo-mark"> <div class="logo-icon">♥</div> <span class="logo-text">irl<span>.wien</span></span> </a> <ul class="nav-links"> <li><a href="#event">Das Event</a></li> <li><a href="#ablauf">Ablauf</a></li> <li><a href="#anmeldung">Ticket</a></li> </ul> <a href="https://buytickets.at/irlwien/2116880" target="_blank" class="nav-pill">Ticket sichern →</a>
+</nav> <!-- HERO -->
+<section class="hero"> <div class="hero-bg"> <div class="blob blob-1"></div> <div class="blob blob-2"></div> <div class="blob blob-3"></div> </div> <span class="floating-emoji fe-1">💘</span> <span class="floating-emoji fe-2">✨</span> <span class="floating-emoji fe-3">🥂</span> <span class="floating-emoji fe-4">💫</span> <div class="hero-left"> <div class="hero-badge"><div class="badge-dot"></div>Sonntag · 22. März 2026 · Schlosspark Schönbrunn</div> <h1 class="hero-title"> Kein Wischen.<br> <span class="line2">Echte Menschen.</span> <span class="line3">im Real Life.</span> </h1> <p class="hero-sub">Speed Dating im <strong>Schlosspark Schönbrunn</strong><br><br>12 Gespräche, 5 Minuten<br><br>Vielleicht sitzt dir um 15:00 Uhr schon dein nächstes Lieblingsgespräch gegenüber 👀</p> <div class="hero-actions"> <a href="https://buytickets.at/irlwien/2116880" target="_blank" class="btn-big">Jetzt Ticket holen ♥</a> <a href="#ablauf" class="btn-ghost">Wie läuft's ab? →</a> </div> <div class="hero-stats"> <div class="stat-item"><div class="stat-num">5'</div><div class="stat-label">pro Gespräch</div></div> <div class="stat-item"><div class="stat-num">12</div><div class="stat-label">Dates an einem Nachmittag</div></div> <div class="stat-item"><div class="stat-num">€10</div><div class="stat-label">inkl. Begrüßungsgetränk*</div></div> </div> </div> <div class="hero-right"> <div class="event-card-hero"> <span class="card-heart">♥</span> <div class="card-tag"><div class="badge-dot"></div>Live · Plätze verfügbar</div> <div class="card-event-name">Speed Dating<br><em>Wien</em></div> <div class="card-detail"> <div class="card-icon">📅</div> <div><div class="card-detail-label">Datum</div><div class="card-detail-value">Sonntag, 22. März 2026</div></div> </div> <div class="card-detail"> <div class="card-icon">⏰</div> <div><div class="card-detail-label">Uhrzeit</div><div class="card-detail-value">15:00 — 17:00 Uhr</div></div> </div> <div class="card-detail"> <div class="card-icon">📍</div> <div><div class="card-detail-label">Location</div><div class="card-detail-value">Schlosspark Schönbrunn, 1130 Wien*</div><div style="font-size:12px;color:#94a3b8;margin-top:4px">Genauer Treffpunkt nach dem Kauf per E-Mail.</div></div> </div> <div class="card-detail"> <div class="card-icon">🎟</div> <div><div class="card-detail-label">Ticket</div><div class="card-detail-value">€10 pro Person · inkl. Begrüßungsgetränk*</div></div> </div> <div class="card-tickets"> <div class="tickets-row"> <span class="ticket-type">👩 Frauen</span> <div class="ticket-bar-wrap"><div class="ticket-bar bar-w"></div></div> <span class="ticket-count">12 Plätze*</span> </div> <div class="tickets-row"> <span class="ticket-type">👨 Männer</span> <div class="ticket-bar-wrap"><div class="ticket-bar bar-m"></div></div> <span class="ticket-count">12 Plätze*</span> </div> </div> </div> </div>
+</section> <!-- WHY -->
+<section class="why-section" id="warum"> <div class="section-tag st-dark reveal">✦ Warum irl.wien</div> <h2 class="why-title reveal">Dating ist kaputt.<br>Wir <em>reparieren</em> es.</h2> <p class="why-sub reveal">Tinder, Bumble, Hinge — du kennst das Spiel. Stundenlang wischen, matchen, ghosten. irl.wien ist das Gegenteil davon.</p> <div class="reasons-grid"> <div class="reason-card reveal"> <span class="reason-emoji">📵</span> <div class="reason-title">Kein Algorithmus</div> <div class="reason-text">Wir entscheiden nicht, wen du siehst. Du begegnest allen — und die Chemie entscheidet den Rest.</div> </div> <div class="reason-card reveal"> <span class="reason-emoji">⚡</span> <div class="reason-title">5 Minuten Wahrheit</div> <div class="reason-text">Kurz genug um nicht langweilig zu werden. Lang genug um zu merken, ob da was ist.</div> </div> <div class="reason-card reveal"> <span class="reason-emoji">🔒</span> <div class="reason-title">Keine Ablehnung</div> <div class="reason-text">Du markierst diskret Ja oder Nein. Nur wenn beide Ja sagen, tauscht ihr Kontakte. Kein unangenehmer Moment.</div> </div> <div class="reason-card reveal"> <span class="reason-emoji">🌿</span> <div class="reason-title">Live Event</div> <div class="reason-text">Persönlich, unkompliziert und mit Fokus auf echte Gespräche.</div> </div> <div class="reason-card reveal"> <span class="reason-emoji">🎯</span> <div class="reason-title">Kuratiert & balanciert</div> <div class="reason-text">Exakt 12 Frauen, 12 Männer. Altersgruppe 18–25. Kein Chaos — der richtige Mix.</div> </div> <div class="reason-card reveal"> <span class="reason-emoji">🥂</span> <div class="reason-title">Nur €10 — alles drin</div> <div class="reason-text">Eintritt + Begrüßungsgetränk für €10. Kein Abo, kein versteckter Kram. </div> </div> </div>
+</section> <!-- HOW IT WORKS -->
+<section class="how-section" id="ablauf"> <div class="section-tag st-white reveal">✦ So läuft's ab</div> <h2 class="how-title reveal">Vier entspannte Schritte bis zum <em>ersten echten Eindruck.</em></h2> <div class="steps"> <div class="step-card reveal"> <div class="step-num">01</div> <span class="step-emoji">🎟</span> <div class="step-title">Ticket buchen</div> <div class="step-text">Online anmelden, €10 bezahlen, Bestätigung per Mail. Du bekommst alle Details.</div> </div> <div class="step-card reveal"> <div class="step-num">02</div> <span class="step-emoji">☀️</span> <div class="step-title">Ankommen um 15:00</div> <div class="step-text">Direkt um 15:00 Uhr geht's los. Begrüßungsgetränk, kurzes Briefing — in entspannter Atmosphäre.</div> </div> <div class="step-card reveal"> <div class="step-num">03</div> <span class="step-emoji">⏱</span> <div class="step-title">5 Minuten pro Date</div> <div class="step-text">Beim Signal wechselst du die Person. 12 Gespräche nacheinander. Danach diskret Ja oder Nein markieren.</div> </div> <div class="step-card reveal"> <div class="step-num">04</div> <span class="step-emoji">💌</span> <div class="step-title">Matches am Montag</div> <div class="step-text">Wenn beide Ja sagen, bekommt ihr gegenseitig die Kontaktdaten per Mail. Der Rest liegt bei euch.</div> </div> </div>
+</section> <!-- TICKET CTA -->
+<section class="signup-section" id="anmeldung"> <div class="signup-inner"> <div class="section-tag st-light reveal" style="margin:0 auto 1.2rem;">🎟 Jetzt anmelden</div> <h2 class="signup-title reveal">Dein Platz beim<br><em>Wien Date.</em></h2> <p class="signup-sub reveal">Plätze sind streng limitiert — exakt 12 Frauen und 12 Männer. Wer zu spät kommt, ist vor Ort.</p> <div class="price-display reveal"> <div class="price-num">€10</div> <div class="price-info"> <div class="p1">pro Person</div> <div class="p2">inkl. Begrüßungsgetränk* · keine Folgekosten</div> </div> </div> <div class="ticket-cta-wrap reveal"> <a href="https://buytickets.at/irlwien/2116880" target="_blank" class="ticket-btn">Ticket jetzt sichern ♥</a> <p class="ticket-note">Du wirst zu unserem sicheren Ticketshop weitergeleitet<br>Kostenlose Stornierung bis 48h vorher</p> <div class="ticket-spots"> <div class="spot-row"> <span class="spot-label">👩 Frauen</span> <div class="spot-bar-wrap"><div class="spot-bar" style="width:100%;background:#FF6B9D;"></div></div> <span class="spot-right">12 Plätze*</span> </div> <div class="spot-row"> <span class="spot-label">👨 Männer</span> <div class="spot-bar-wrap"><div class="spot-bar" style="width:100%;background:#6B9DFF;"></div></div> <span class="spot-right">12 Plätze*</span> </div> </div> </div> </div>
+</section> <!-- FOOTER -->
+<footer> <a href="#" class="logo-mark"> <div class="logo-icon">♥</div> <span class="logo-text">irl<span style="color:var(--red-soft)">.wien</span></span> </a> <p>© 2026 irl.wien · hello@irl.wien · Wien</p> <ul class="footer-links"> <li><a href="#">Impressum</a></li> <li><a href="#">Datenschutz</a></li> <li><a href="#">AGB</a></li> </ul>
+<div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;line-height:1.65;color:#94a3b8;">* Das Event findet statt, sofern mindestens 16 Teilnehmer angemeldet sind. Im Falle einer Absage werden alle Teilnehmer mindestens 24 Stunden vorher per E-Mail benachrichtigt und erhalten eine vollständige Rückerstattung.<br><br>Bei schlechten Wetterverhältnissen wird das Event verschoben. Dein Ticket behält seine Gültigkeit.<br><br>Bei Nicht-Erscheinen wird keine Rückerstattung gewährt.</div></footer> <script>
+// Scroll reveal — each element independently
+const revealEls = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); } });
+}, { threshold: 0.07 });
+revealEls.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
